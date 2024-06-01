@@ -1,77 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/icono casino.webp">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Casino JATM</title>
-</head>
-<body>
+	<head>
+        <link href="Style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+		<title>Ruleta Casino </title>
+	</head>
+	<body>
+		
+		<div class="container">
+			<div id="canvas-container"></div>
+			<div class="box b0 green nbr" nums="0">0</div>
+			<div class="box b1 red nbr" row="1" nums="3">3</div>
+			<div class="box b2 black nbr" row="1" nums="6">6</div>
+			<div class="box b3 red nbr" row="1" nums="9">9</div>
+			<div class="box b4 red nbr" row="1" nums="12">12</div>
+			<div class="box b5 black nbr" row="1" nums="15">15</div>
+			<div class="box b6 red nbr" row="1" nums="18">18</div>
+			<div class="box b7 red nbr" row="1" nums="21">21</div>
+			<div class="box b8 black nbr" row="1" nums="24">24</div>
+			<div class="box b9 red nbr" row="1" nums="27">27</div>
+			<div class="box b10 red nbr" row="1" nums="30">30</div>
+			<div class="box b11 black nbr" row="1" nums="33">33</div>
+			<div class="box b12 red nbr" row="1" nums="36">36</div>
+			<div class="box b13 green" onClick="rows(this, 1)">1st</div>
+			
+			<div class="box b14 black nbr" row="2" nums="2">2</div>
+			<div class="box b15 red nbr" row="2" nums="5">5</div>
+			<div class="box b16 black nbr" row="2" nums="8">8</div>
+			<div class="box b17 black nbr" row="2" nums="11">11</div>
+			<div class="box b18 red nbr" row="2" nums="14">14</div>
+			<div class="box b19 black nbr" row="2" nums="17">17</div>
+			<div class="box b20 black nbr" row="2" nums="20">20</div>
+			<div class="box b21 red nbr" row="2" nums="23">23</div>
+			<div class="box b22 black nbr" row="2" nums="26">26</div>
+			<div class="box b23 black nbr" row="2" nums="29">29</div>
+			<div class="box b24 red nbr" row="2" nums="32">32</div>
+			<div class="box b25 black nbr" row="2" nums="35">35</div>
+			<div class="box b26 green" onClick="rows(this, 2)">2nd</div>
+			
+			<div class="box b27 red nbr" row="3" nums="1">1</div>
+			<div class="box b28 black nbr" row="3" nums="4">4</div>
+			<div class="box b29 red nbr" row="3" nums="7">7</div>
+			<div class="box b30 black nbr" row="3" nums="10">10</div>
+			<div class="box b31 black nbr" row="3" nums="13">13</div>
+			<div class="box b32 red nbr" row="3" nums="16">16</div>
+			<div class="box b33 red nbr" row="3" nums="19">19</div>
+			<div class="box b34 black nbr" row="3" nums="22">22</div>
+			<div class="box b35 red nbr" row="3" nums="25">25</div>
+			<div class="box b36 black nbr" row="3" nums="28">28</div>
+			<div class="box b37 black nbr" row="3" nums="31">31</div>
+			<div class="box b38 red nbr" row="3" nums="34">34</div>
+			<div class="box b39 green" onClick="rows(this, 3)">3rd</div>
+			
+			<div class="box b40 green" onClick="select(this, 1, 12)">1 - 12</div>
+			<div class="box b41 green" onClick="select(this, 13, 24)">13 - 24</div>
+			<div class="box b42 green" onClick="select(this, 25, 36)">25 - 36</div>
+			
+			<div class="box b43 green" onClick="select(this, 1, 18)">1 - 18</div>
+			<div class="box b44 green" onClick="evenOdd(this, 0)">EVEN</div>
+			<div class="box b45 red" onClick="redBlack(this, 'red')">RED</div>
+			<div class="box b46 black" onClick="redBlack(this, 'black')">BLACK</div>
+			<div class="box b47 green" onClick="evenOdd(this, 1)">ODD</div>
+			<div class="box b48 green" onClick="select(this, 19, 36)">19 - 36</div>
+			
+			<div class="choicetoken token1" onClick="choiceToken(1)">1</div>
+			<div class="choicetoken token5" onClick="choiceToken(5)">5</div>
+			<div class="choicetoken token10" onClick="choiceToken(10)">10</div>
+			<div class="choicetoken tokenall" onClick="choiceToken('all')">ALL</div>
+			<div class="choicetoken token1less " onClick="choiceToken(-1)">-1</div>
+			<div class="choicetoken token5less " onClick="choiceToken(-5)">-5</div>
+			<div class="choicetoken token10less " onClick="choiceToken(-10)">-10</div>
+			
+			<div id="compte" class="box2 b49 "> 1000 $</div>
+			<div class="box2 b50 green" onClick="cancel()">CANCEL</div>
+			<span id="bet">BET</span>
+			<div id="valBet" class="box2 b51">0 $</div>
+			<span id="bet">BET</span>
+			<span id="cash">CA$H</span>
+			
+			<div id="btninfo" onClick="openInfo()">i</div>
+			<div id="info">
+				<i id="close" class="fas fa-times-circle fa-lg" onClick="closeInfo()"></i>
+				<h3>Tipos de pagos</h3>
+				<p>
+					
+					Number => 35 x bet <br> 
+					Red/Black => 1 x bet<br>
+					Even/Odd => 1 x bet<br>
+					1st/2nd/3rd => 2 x bet<br>
+					1 - 12 => 2 x bet<br>
+					13 - 24 => 2 x bet<br>
+					25 - 36 => 2 x bet<br>
+					1 - 18 => 0.5 x bet<br>
+					19 - 36 => 0.5 x bet
 
-    <div class="fondo">
-        <div class="fondo2">
-            <nav class="nav-menu">
-                <div class="container-user">    
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: msFilter;"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path></svg>
-                    <span class="nombre-user">Marcos Guanchez</span>
-                    <span class="id-usuario">ID: 10938019287</span>
-                </div>
-                <div class="container-recarga">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: msFilter"><path d="M20 7V5c0-1.103-.897-2-2-2H5C3.346 3 2 4.346 2 6v12c0 2.201 1.794 3 3 3h15c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-2 9h-2v-4h2v4zM5 7a1.001 1.001 0 0 1 0-2h13v2H5z"></path></svg>
-                </div>
-            </nav>
-
-            <div class="titulo-principal">
-                <div class="titulo2">
-                    <span>Selecciona un juego</span>
-                </div>
-                <div class="titulo1">
-                    <h1>SELECCIONA UN JUEGO</h1>
-                </div>
-            </div>
-
-            <div class="container-juegos">
-                <div class="container-cartas">
-                    <a href="">
-                        <article class="card-article">
-                            <img src="img/tragamonedas.webp" alt="image" class="card-img">
-                            <div class="card-data">
-                                <span class="card-description">Juega y prueba tu suerte con la tragamonedas</span>
-                                <h2 class="card-title">Tragamonedas</h2>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="">
-                        <article class="card-article">
-                            <img src="img/ruleta.jpg" alt="image" class="card-img">
-                            <div class="card-data">
-                                <span class="card-description">Juega y prueba tu suerte con la ruleta</span>
-                                <h2 class="card-title">Ruleta</h2>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="">
-                        <article class="card-article">
-                            <img src="img/blackjack.jpg" alt="image" class="card-img">
-                            <div class="card-data">
-                                <span class="card-description">Juega y prueba tu suerte con el Black Jack</span>
-                                <h2 class="card-title">Black Jack</h2>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-            </div> 
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy;Todos los derechos reservados</p>
-        <p>Desarrollado por <a href="">Marcos</a>, <a href="">Juan (Maracucho)</a>, <a href="">Thomas</a>  y <a href="">Andrea</a>.</p>
-    </footer>
-    <script src="main.js"></script>
-</body>
+				</p>
+			</div>
+			<div id="output">?</div>
+			<div id="play" onClick="start()">PLAY</div>
+			<div id="finish"></div>
+			
+		</div>
+		<script src="main.js"></script>
+	</body>
 </html>
